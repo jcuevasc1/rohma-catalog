@@ -80,12 +80,19 @@ nav{position:sticky;top:0;z-index:100;background:var(--dark);display:flex;align-
 .process-section .sh-title em{font-style:italic;color:var(--gold-light)}
 .process-section .sh-rule{background:var(--gold)}
 .process-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:1rem;margin-top:2.5rem}
-.ps{border:.5px solid rgba(184,135,74,.2);border-radius:4px;padding:1.4rem 1.1rem;transition:border-color .2s}
+.ps{border:.5px solid rgba(184,135,74,.2);border-radius:4px;padding:1.4rem 1.1rem;transition:border-color .2s;cursor:default}
+.ps.clickable{cursor:pointer}
+.ps.clickable:hover{border-color:rgba(184,135,74,.6);background:rgba(184,135,74,.05)}
 .ps:hover{border-color:rgba(184,135,74,.5)}
 .ps-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:400;color:rgba(184,135,74,.22);line-height:1;margin-bottom:.4rem}
 .ps-icon{font-size:1.1rem;margin-bottom:.5rem}
 .ps-title{font-size:.85rem;font-weight:500;color:var(--cream);margin-bottom:.35rem}
 .ps-desc{font-size:.75rem;color:var(--stone);line-height:1.6;font-weight:300}
+.ps-video-panel{display:none;margin-top:1rem;padding-top:1rem;border-top:.5px solid rgba(184,135,74,.2);flex-direction:column;gap:.5rem}
+.ps-video-panel.open{display:flex}
+.ps-video-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--dark);padding:.5rem 1rem;border-radius:3px;font-size:.75rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s}
+.ps-video-btn:hover{background:var(--gold-light)}
+.ps-video-btn svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
 .qr-section{background:var(--mid);padding:4rem 2.5rem}
 .qr-inner{display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;max-width:860px;margin:0 auto}
 .qr-section .sh-eye,.qr-section .sh-title{color:var(--cream)}
@@ -146,6 +153,10 @@ footer{background:#120E09;padding:2rem 2.5rem;display:flex;align-items:center;ju
 .drive-btn:hover{background:var(--gold-light)}
 .drive-btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0}
 .no-process{padding:2rem;background:var(--cream);border:.5px solid var(--border);border-radius:4px;text-align:center;color:var(--muted);font-size:.85rem;font-style:italic}
+.general-process{margin-top:2.5rem;padding-top:2rem;border-top:.5px solid var(--border)}
+.general-process-eye{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;font-weight:500}
+.general-process-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:1rem}
+.general-process-btns{display:flex;gap:.7rem;flex-wrap:wrap}
 @media(max-width:768px){
   .hero{grid-template-columns:1fr}.hero-visual{display:none}
   nav{padding:.8rem 1.2rem}.nav-links{display:none}
@@ -254,7 +265,23 @@ footer{background:#120E09;padding:2rem 2.5rem;display:flex;align-items:center;ju
       <div class="sh-rule"></div>
     </div>
     <div class="process-grid">
-      <div class="ps"><div class="ps-num">01</div><div class="ps-icon">🪵</div><div class="ps-title" data-en="Wood Selection" data-es="Selección de Madera">Wood Selection</div><div class="ps-desc" data-en="We hand-pick every plank for grain, moisture and structural integrity." data-es="Elegimos cada tabla por veta, humedad e integridad estructural.">We hand-pick every plank for grain, moisture and structural integrity.</div></div>
+      <div class="ps clickable" onclick="toggleVideoPanel(this)">
+        <div class="ps-num">01</div>
+        <div class="ps-icon">🪵</div>
+        <div class="ps-title" data-en="Wood Selection" data-es="Selección de Madera">Wood Selection</div>
+        <div class="ps-desc" data-en="We hand-pick every plank for grain, moisture and structural integrity." data-es="Elegimos cada tabla por veta, humedad e integridad estructural.">We hand-pick every plank for grain, moisture and structural integrity.</div>
+        <div class="ps-video-panel">
+          <a class="ps-video-btn" href="https://drive.google.com/file/d/1zeQTpnZYrRf5t6Us6RmiTmM893iAq0J2/view?usp=drive_link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Wood Selection
+          </a>
+          <a class="ps-video-btn" href="https://drive.google.com/file/d/1wqzJ0npdlRNbxFwaEwu06AA-zr43pDJ_/view?usp=drive_link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Dry Oven · Kiln-Dried
+          </a>
+          <a class="ps-video-btn" href="https://drive.google.com/file/d/1MPBnx2mCOj-sLjZeOE5oTaGH_0JhsB7m/view?usp=drive_link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Fumigation
+          </a>
+        </div>
+      </div>
       <div class="ps"><div class="ps-num">02</div><div class="ps-icon">📐</div><div class="ps-title" data-en="Design & Layout" data-es="Diseño y Trazo">Design & Layout</div><div class="ps-desc" data-en="Dimensions and joinery points drawn by hand directly on the wood." data-es="Medidas y puntos de ensamble trazados a mano sobre la madera.">Dimensions and joinery points drawn by hand directly on the wood.</div></div>
       <div class="ps"><div class="ps-num">03</div><div class="ps-icon">🪚</div><div class="ps-title" data-en="Cutting & Shaping" data-es="Corte y Formado">Cutting & Shaping</div><div class="ps-desc" data-en="Table saw, router and band saw give each component precise final geometry." data-es="Sierra, fresa y trompo dan a cada componente su geometría final.">Table saw, router and band saw give each component precise final geometry.</div></div>
       <div class="ps"><div class="ps-num">04</div><div class="ps-icon">🔧</div><div class="ps-title" data-en="Joinery & Assembly" data-es="Ensamble">Joinery & Assembly</div><div class="ps-desc" data-en="Mortise-and-tenon, dovetail and wooden pegs. No hidden screws." data-es="Caja y espiga, cola de milano, clavijas. Sin tornillos ocultos.">Mortise-and-tenon, dovetail and wooden pegs. No hidden screws.</div></div>
@@ -291,7 +318,7 @@ footer{background:#120E09;padding:2rem 2.5rem;display:flex;align-items:center;ju
   <footer>
     <div class="footer-logo">ROHMA</div>
     <p class="footer-tagline" data-en="Crafted by hand. Documented with pride." data-es="Hecho a mano. Documentado con orgullo.">"Crafted by hand. Documented with pride."</p>
-    <p class="footer-info">Navojoa, Sonora, México.  642 cowork design - by JP </p>
+    <p class="footer-info">Navojoa, Sonora, México.  642 cowork design - by JP</p>
   </footer>
 </div>
 
@@ -317,7 +344,6 @@ footer{background:#120E09;padding:2rem 2.5rem;display:flex;align-items:center;ju
         <h1 class="piece-name" id="piece-name"></h1>
         <p class="piece-wood" id="piece-wood"></p>
         <p class="piece-desc" id="piece-desc"></p>
-
       </div>
     </div>
   </div>
@@ -329,10 +355,38 @@ footer{background:#120E09;padding:2rem 2.5rem;display:flex;align-items:center;ju
     </div>
     <div id="piece-gallery"></div>
     <div id="piece-video"></div>
+    <!-- General Process Videos -->
+    <div class="general-process">
+      <p class="general-process-eye" data-en="General Process" data-es="Proceso General">General Process</p>
+      <p class="general-process-title" data-en="Wood preparation videos" data-es="Videos de preparación de madera">Wood preparation videos</p>
+      <div class="general-process-btns">
+        <a class="drive-btn" href="https://drive.google.com/file/d/1zeQTpnZYrRf5t6Us6RmiTmM893iAq0J2/view?usp=drive_link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Wood Selection
+        </a>
+        <a class="drive-btn" href="https://drive.google.com/file/d/1wqzJ0npdlRNbxFwaEwu06AA-zr43pDJ_/view?usp=drive_link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Dry Oven · Kiln-Dried
+        </a>
+        <a class="drive-btn" href="https://drive.google.com/file/d/1MPBnx2mCOj-sLjZeOE5oTaGH_0JhsB7m/view?usp=drive_link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Fumigation
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
+// General process videos (shared across all pieces)
+const GENERAL_VIDEOS = [
+  { label: 'Wood Selection', url: 'https://drive.google.com/file/d/1zeQTpnZYrRf5t6Us6RmiTmM893iAq0J2/view?usp=drive_link' },
+  { label: 'Dry Oven · Kiln-Dried', url: 'https://drive.google.com/file/d/1wqzJ0npdlRNbxFwaEwu06AA-zr43pDJ_/view?usp=drive_link' },
+  { label: 'Fumigation', url: 'https://drive.google.com/file/d/1MPBnx2mCOj-sLjZeOE5oTaGH_0JhsB7m/view?usp=drive_link' },
+];
+
+function toggleVideoPanel(el){
+  const panel = el.querySelector('.ps-video-panel');
+  if(panel) panel.classList.toggle('open');
+}
+
 let CATALOG = [];
 let pendingRoute = null;
 
@@ -413,7 +467,6 @@ function showPiece(id){
   document.getElementById('piece-name').textContent = item['name_'+lang];
   document.getElementById('piece-wood').textContent = '🪵 ' + item['wood_'+lang];
   document.getElementById('piece-desc').textContent = item['desc_'+lang] || '';
-
   const imgWrap = document.getElementById('piece-img-wrap');
   imgWrap.innerHTML = item.image
     ? `<img src="${item.image}" alt="${item['name_'+lang]}" onerror="this.parentElement.innerHTML='<div class=piece-img-placeholder>🪑</div>'"/>`
