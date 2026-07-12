@@ -157,6 +157,15 @@ footer{background:#120E09;padding:2rem 2.5rem;display:flex;align-items:center;ju
 .general-process-eye{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;font-weight:500}
 .general-process-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:1rem}
 .general-process-btns{display:flex;gap:.7rem;flex-wrap:wrap}
+.old-collections-modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(14,10,6,.85);align-items:flex-start;justify-content:center;padding:2rem;overflow-y:auto}
+.old-collections-modal.open{display:flex}
+.old-collections-box{background:var(--cream);border-radius:6px;padding:2rem;max-width:900px;width:100%;position:relative;margin:auto}
+.old-collections-close{position:absolute;top:.8rem;right:1rem;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--muted);line-height:1}
+.old-collections-close:hover{color:var(--dark)}
+.old-collections-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--text);margin-bottom:1.5rem}
+.old-collections-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.old-collections-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;cursor:pointer;transition:transform .2s}
+.old-collections-grid img:hover{transform:scale(1.03)}
 .contact-modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(14,10,6,.7);align-items:center;justify-content:center;padding:1.5rem}
 .contact-modal.open{display:flex}
 .contact-box{background:var(--cream);border-radius:6px;padding:2rem;max-width:340px;width:100%;position:relative;border:.5px solid var(--border)}
@@ -220,6 +229,7 @@ footer{background:#120E09;padding:2rem 2.5rem;display:flex;align-items:center;ju
       <div style="display:flex;flex-direction:column;gap:.7rem;width:fit-content">
         <a href="#catalog" class="hero-cta" style="text-align:center;" data-en="Explore the Catalog" data-es="Ver el Catálogo">Explore the Catalog</a>
         <button class="hero-cta" style="border:none;cursor:pointer;width:100%;" onclick="document.getElementById('contact-modal').classList.add('open')" data-en="Contact Us" data-es="Contáctanos">Contact Us</button>
+        <button class="hero-cta" style="border:none;cursor:pointer;width:100%;" onclick="document.getElementById('old-collections-modal').classList.add('open')" data-en="Old Collections" data-es="Colecciones Anteriores">Old Collections</button>
       </div>
     </div>
     <div class="hero-visual">
@@ -332,6 +342,27 @@ footer{background:#120E09;padding:2rem 2.5rem;display:flex;align-items:center;ju
     </div>
   </section>
 
+  <!-- OLD COLLECTIONS MODAL -->
+  <div class="old-collections-modal" id="old-collections-modal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="old-collections-box">
+      <button class="old-collections-close" onclick="document.getElementById('old-collections-modal').classList.remove('open')">✕</button>
+      <div class="old-collections-title" data-en="Old Collections" data-es="Colecciones Anteriores">Old Collections</div>
+      <div class="old-collections-grid">
+        <img src="/images/old-collections/old-001.jpeg" alt="Old Collection" onerror="this.style.display='none'" onclick="openLightbox(getOldCollectionImages(), Array.from(this.parentElement.querySelectorAll('img')).indexOf(this))"/>
+        <img src="/images/old-collections/old-002.jpeg" alt="Old Collection" onerror="this.style.display='none'" onclick="openLightbox(getOldCollectionImages(), Array.from(this.parentElement.querySelectorAll('img')).indexOf(this))"/>
+        <img src="/images/old-collections/old-003.jpeg" alt="Old Collection" onerror="this.style.display='none'" onclick="openLightbox(getOldCollectionImages(), Array.from(this.parentElement.querySelectorAll('img')).indexOf(this))"/>
+        <img src="/images/old-collections/old-004.jpeg" alt="Old Collection" onerror="this.style.display='none'" onclick="openLightbox(getOldCollectionImages(), Array.from(this.parentElement.querySelectorAll('img')).indexOf(this))"/>
+        <img src="/images/old-collections/old-005.jpeg" alt="Old Collection" onerror="this.style.display='none'" onclick="openLightbox(getOldCollectionImages(), Array.from(this.parentElement.querySelectorAll('img')).indexOf(this))"/>
+        <img src="/images/old-collections/old-006.jpeg" alt="Old Collection" onerror="this.style.display='none'" onclick="openLightbox(getOldCollectionImages(), Array.from(this.parentElement.querySelectorAll('img')).indexOf(this))"/>
+        <img src="/images/old-collections/old-007.jpeg" alt="Old Collection" onerror="this.style.display='none'" onclick="openLightbox(getOldCollectionImages(), Array.from(this.parentElement.querySelectorAll('img')).indexOf(this))"/>
+        <img src="/images/old-collections/old-008.jpeg" alt="Old Collection" onerror="this.style.display='none'" onclick="openLightbox(getOldCollectionImages(), Array.from(this.parentElement.querySelectorAll('img')).indexOf(this))"/>
+        <img src="/images/old-collections/old-009.jpeg" alt="Old Collection" onerror="this.style.display='none'" onclick="openLightbox(getOldCollectionImages(), Array.from(this.parentElement.querySelectorAll('img')).indexOf(this))"/>
+        <img src="/images/old-collections/old-010.jpeg" alt="Old Collection" onerror="this.style.display='none'" onclick="openLightbox(getOldCollectionImages(), Array.from(this.parentElement.querySelectorAll('img')).indexOf(this))"/>
+        <img src="/images/old-collections/old-011.jpeg" alt="Old Collection" onerror="this.style.display='none'" onclick="openLightbox(getOldCollectionImages(), Array.from(this.parentElement.querySelectorAll('img')).indexOf(this))"/>
+      </div>
+    </div>
+  </div>
+
   <!-- CONTACT MODAL -->
   <div class="contact-modal" id="contact-modal" onclick="closeContactModal(event)">
     <div class="contact-box">
@@ -428,6 +459,11 @@ function closeContactModal(e){
   if(e.target === document.getElementById('contact-modal')) closeContactModalDirect();
 }
 
+function getOldCollectionImages(){
+  return Array.from(document.querySelectorAll('.old-collections-grid img'))
+    .filter(img=>img.style.display!=='none')
+    .map(img=>img.src);
+}
 function toggleVideoPanel(el){
   const panel = el.querySelector('.ps-video-panel');
   if(panel) panel.classList.toggle('open');
