@@ -157,6 +157,20 @@ footer{background:#120E09;padding:2rem 2.5rem;display:flex;align-items:center;ju
 .general-process-eye{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;font-weight:500}
 .general-process-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:1rem}
 .general-process-btns{display:flex;gap:.7rem;flex-wrap:wrap}
+.contact-modal{display:none;position:fixed;inset:0;z-index:500;background:rgba(14,10,6,.7);align-items:center;justify-content:center;padding:1.5rem}
+.contact-modal.open{display:flex}
+.contact-box{background:var(--cream);border-radius:6px;padding:2rem;max-width:340px;width:100%;position:relative;border:.5px solid var(--border)}
+.contact-close{position:absolute;top:.8rem;right:1rem;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--muted);line-height:1}
+.contact-close:hover{color:var(--dark)}
+.contact-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--text);margin-bottom:1.2rem}
+.contact-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;font-size:.85rem;color:var(--text)}
+.contact-row a{color:var(--gold);text-decoration:none}
+.contact-row a:hover{text-decoration:underline}
+.contact-icon{font-size:1rem;flex-shrink:0}
+.contact-wa{display:inline-flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;padding:.65rem 1.3rem;border-radius:3px;font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;margin-top:.8rem;transition:background .2s}
+.contact-wa:hover{background:#1ebe5d}
+.btn-contact{display:inline-block;background:transparent;color:var(--gold);border:.5px solid var(--gold);padding:.75rem 2rem;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s;margin-top:.8rem}
+.btn-contact:hover{background:var(--gold);color:var(--dark)}
 @media(max-width:768px){
   .hero{grid-template-columns:1fr}.hero-visual{display:none}
   nav{padding:.8rem 1.2rem}.nav-links{display:none}
@@ -204,6 +218,7 @@ footer{background:#120E09;padding:2rem 2.5rem;display:flex;align-items:center;ju
       <div class="hero-badge">✦ <span data-en="No two pieces are ever the same" data-es="No hay dos piezas iguales">No two pieces are ever the same</span></div>
       <p class="hero-sub" data-en="Each ROHMA piece is built by hand, one at a time. Scan the QR tag to watch its complete fabrication story — from raw wood to finished craft." data-es="Cada mueble ROHMA se construye a mano, uno a la vez. Escanea el QR para ver el proceso completo de fabricación.">Each ROHMA piece is built by hand, one at a time. Scan the QR tag to watch its complete fabrication story — from raw wood to finished craft.</p>
       <a href="#catalog" class="hero-cta" data-en="Explore the Catalog" data-es="Ver el Catálogo">Explore the Catalog</a>
+      <button class="btn-contact" onclick="document.getElementById('contact-modal').classList.add('open')" data-en="Contact Us" data-es="Contáctanos">Contact Us</button>
     </div>
     <div class="hero-visual">
       <div class="hero-wood"></div>
@@ -315,6 +330,21 @@ footer{background:#120E09;padding:2rem 2.5rem;display:flex;align-items:center;ju
     </div>
   </section>
 
+  <!-- CONTACT MODAL -->
+  <div class="contact-modal" id="contact-modal" onclick="closeContactModal(event)">
+    <div class="contact-box">
+      <button class="contact-close" onclick="closeContactModalDirect()">✕</button>
+      <div class="contact-title">Contact Us</div>
+      <div class="contact-row"><span class="contact-icon">👤</span>Rogelio Hernandez Martinez</div>
+      <div class="contact-row"><span class="contact-icon">✉️</span><a href="mailto:rohmamesquite@live.com.mx">rohmamesquite@live.com.mx</a></div>
+      <div class="contact-row"><span class="contact-icon">📞</span><a href="tel:+526421122333">+52 6421122333</a></div>
+      <a class="contact-wa" href="https://wa.me/526421122333?text=Hello%2C%20I%20am%20interested%20on%20getting%20more%20information%20about%20your%20mesquite%20furniture." target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.843L0 24l6.302-1.499A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.733.888.939-3.64-.234-.374A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-logo">ROHMA</div>
     <p class="footer-tagline" data-en="Crafted by hand. Documented with pride." data-es="Hecho a mano. Documentado con orgullo.">"Crafted by hand. Documented with pride."</p>
@@ -381,6 +411,13 @@ const GENERAL_VIDEOS = [
   { label: 'Dry Oven · Kiln-Dried', url: 'https://drive.google.com/file/d/1wqzJ0npdlRNbxFwaEwu06AA-zr43pDJ_/view?usp=drive_link' },
   { label: 'Fumigation', url: 'https://drive.google.com/file/d/1MPBnx2mCOj-sLjZeOE5oTaGH_0JhsB7m/view?usp=drive_link' },
 ];
+
+function closeContactModalDirect(){
+  document.getElementById('contact-modal').classList.remove('open');
+}
+function closeContactModal(e){
+  if(e.target === document.getElementById('contact-modal')) closeContactModalDirect();
+}
 
 function toggleVideoPanel(el){
   const panel = el.querySelector('.ps-video-panel');
